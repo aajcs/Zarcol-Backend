@@ -10,7 +10,7 @@ const contactoGets = async (req = request, res = response) => {
     Contacto.find(query)
       .skip(Number(desde))
       .limit(Number(limite))
-      .populate("id_refineria", "nombre"),
+      .populate("id_empresa", "nombre"),
   ]);
 
   res.json({
@@ -21,10 +21,7 @@ const contactoGets = async (req = request, res = response) => {
 
 const contactoGet = async (req = request, res = response) => {
   const { id } = req.params;
-  const contacto = await Contacto.findById(id).populate(
-    "id_refineria",
-    "nombre"
-  );
+  const contacto = await Contacto.findById(id).populate("id_empresa", "nombre");
 
   if (contacto && !contacto.eliminado) {
     res.json(contacto);
@@ -43,7 +40,7 @@ const contactoPost = async (req, res = response) => {
     direccion,
     telefono,
     tipo,
-    id_refineria,
+    id_empresa,
     representanteLegal,
     estado,
     eliminado,
@@ -55,7 +52,7 @@ const contactoPost = async (req, res = response) => {
     direccion,
     telefono,
     tipo,
-    id_refineria,
+    id_empresa,
     representanteLegal,
     estado,
     eliminado,
@@ -63,7 +60,7 @@ const contactoPost = async (req, res = response) => {
 
   try {
     await contacto.save();
-    await contacto.populate("id_refineria", "nombre").execPopulate();
+    await contacto.populate("id_empresa", "nombre").execPopulate();
     res.json({
       contacto,
     });
@@ -77,7 +74,7 @@ const contactoPut = async (req, res = response) => {
   const { _id, ...resto } = req.body;
   const contacto = await Contacto.findByIdAndUpdate(id, resto, {
     new: true,
-  }).populate("id_refineria", "nombre");
+  }).populate("id_empresa", "nombre");
 
   res.json(contacto);
 };

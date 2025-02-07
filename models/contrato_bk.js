@@ -4,7 +4,7 @@ const ContratoSchema = Schema(
   {
     id_empresa: {
       type: Schema.Types.ObjectId,
-      ref: "Refineria",
+      ref: "Empresa",
       required: false,
     },
     producto: {

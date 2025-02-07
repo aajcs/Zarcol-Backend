@@ -16,7 +16,7 @@ class Server {
       productos: "/api/productos",
       usuarios: "/api/usuarios",
       uploads: "/api/uploads",
-      refinerias: "/api/refinerias",
+      empresas: "/api/empresas",
       linea_carga: "/api/linea_carga",
       bomba: "/api/bomba",
       tanque: "/api/tanque",
@@ -67,7 +67,7 @@ class Server {
     this.app.use(this.paths.productos, require("../routes/productos"));
     this.app.use(this.paths.usuarios, require("../routes/usuarios"));
     this.app.use(this.paths.uploads, require("../routes/uploads"));
-    this.app.use(this.paths.refinerias, require("../routes/refinerias"));
+    this.app.use(this.paths.empresas, require("../routes/empresas"));
     this.app.use(this.paths.linea_carga, require("../routes/linea_carga"));
     this.app.use(this.paths.bomba, require("../routes/bomba"));
     this.app.use(this.paths.tanque, require("../routes/tanque"));

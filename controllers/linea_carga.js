@@ -11,7 +11,7 @@ const linea_cargaGets = async (req = request, res = response) => {
     Linea_carga.find(query)
       .skip(Number(desde))
       .limit(Number(limite))
-      .populate("id_refineria", "nombre"),
+      .populate("id_empresa", "nombre"),
   ]);
 
   res.json({
@@ -23,7 +23,7 @@ const linea_cargaGets = async (req = request, res = response) => {
 const linea_cargaGet = async (req = request, res = response) => {
   const { id } = req.params;
   const linea_carga = await Linea_carga.findById(id).populate(
-    "id_refineria",
+    "id_empresa",
     "nombre"
   );
 
@@ -39,17 +39,17 @@ const linea_cargaGet = async (req = request, res = response) => {
 };
 
 const linea_cargaPost = async (req, res = response) => {
-  const { ubicacion, nombre, id_refineria } = req.body;
+  const { ubicacion, nombre, id_empresa } = req.body;
   const linea_carga = new Linea_carga({
     ubicacion,
     nombre,
-    id_refineria,
+    id_empresa,
   });
   console.log(linea_carga);
   try {
     // Guardar en BD
     await linea_carga.save();
-    await linea_carga.populate("id_refineria", "nombre").execPopulate(),
+    await linea_carga.populate("id_empresa", "nombre").execPopulate(),
       res.json({
         linea_carga,
       });
@@ -63,7 +63,7 @@ const linea_cargaPut = async (req, res = response) => {
   const { _id, ...resto } = req.body;
   const linea_carga = await Linea_carga.findByIdAndUpdate(id, resto, {
     new: true,
-  }).populate("id_refineria", "nombre");
+  }).populate("id_empresa", "nombre");
 
   res.json(linea_carga);
 };

@@ -16,15 +16,15 @@ const recepcionGets = async (req = request, res = response) => {
         .populate("id_contrato"),
     ]);
 
-    // Poblar id_refineria e id_contacto de cada recepción
+    // Poblar id_empresa e id_contacto de cada recepción
     await Promise.all(
       recepciones.map(async (recepcion) => {
         await recepcion
           .populate({
             path: "id_contrato",
-            select: "id_refineria id_contacto",
+            select: "id_empresa id_contacto",
             populate: [
-              { path: "id_refineria", select: "nombre" },
+              { path: "id_empresa", select: "nombre" },
               { path: "id_contacto", select: "nombre" },
             ],
           })
@@ -48,9 +48,9 @@ const recepcionGet = async (req = request, res = response) => {
   try {
     const recepcionActualizado = await Recepcion.findById(id).populate({
       path: "id_contrato",
-      select: "id_refineria id_contacto",
+      select: "id_empresa id_contacto",
       populate: [
-        { path: "id_refineria", select: "nombre" },
+        { path: "id_empresa", select: "nombre" },
         { path: "id_contacto", select: "nombre" },
       ],
     });
@@ -111,9 +111,9 @@ const recepcionPost = async (req, res = response) => {
     await nuevaRecepcion
       .populate({
         path: "id_contrato",
-        select: "id_refineria id_contacto",
+        select: "id_empresa id_contacto",
         populate: [
-          { path: "id_refineria", select: "nombre" },
+          { path: "id_empresa", select: "nombre" },
           { path: "id_contacto", select: "nombre" },
         ],
       })
@@ -139,9 +139,9 @@ const recepcionPut = async (req, res = response) => {
       new: true,
     }).populate({
       path: "id_contrato",
-      select: "id_refineria id_contacto",
+      select: "id_empresa id_contacto",
       populate: [
-        { path: "id_refineria", select: "nombre" },
+        { path: "id_empresa", select: "nombre" },
         { path: "id_contacto", select: "nombre" },
       ],
     });
@@ -168,9 +168,9 @@ const recepcionDelete = async (req, res = response) => {
       { new: true }
     ).populate({
       path: "id_contrato",
-      select: "id_refineria id_contacto",
+      select: "id_empresa id_contacto",
       populate: [
-        { path: "id_refineria", select: "nombre" },
+        { path: "id_empresa", select: "nombre" },
         { path: "id_contacto", select: "nombre" },
       ],
     });

@@ -2,7 +2,7 @@ const Bomba = require("./bomba");
 const Categoria = require("./categoria");
 const Linea_carga = require("./linea_carga");
 const Producto = require("./producto");
-const Refineria = require("./refineria");
+const Empresa = require("./empresa");
 const Role = require("./role");
 const Server = require("./server");
 const Usuario = require("./usuario");
@@ -17,7 +17,7 @@ const inspeccion_tanque = require('./inspeccion_tanque');
 const despacho = require('./despacho');
 const recepcion = require('./recepcion');
 const tanque = require('./tanque');
-const refineria = require('./refineria');
+const empresa = require('./empresa');
 const lotes_producto = require('./lotes_producto');
 const linea_carga = require('./linea_carga');*/
 
@@ -28,7 +28,7 @@ module.exports = {
   Server,
   Usuario,
   Linea_carga,
-  Refineria,
+  Empresa,
   Bomba,
   Tanque,
   Torre,
@@ -41,7 +41,7 @@ module.exports = {
     despacho,
     recepcion,
     tanque,
-    refineria,
+    empresa,
     lotes_producto,
     linea_carga, */
 };

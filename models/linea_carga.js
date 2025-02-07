@@ -12,9 +12,9 @@ const linea_cargaSchema = Schema(
       required: [true, "Nombre de linea obligatorio"],
     },
 
-    id_refineria: {
+    id_empresa: {
       type: Schema.Types.ObjectId,
-      ref: "Refineria",
+      ref: "Empresa",
       required: true,
     },
     id_recepcion: {

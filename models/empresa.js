@@ -1,10 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-const RefineriaSchema = Schema(
+const EmpresaSchema = Schema(
   {
     ubicacion: {
       type: String,
-      required: [true, "Ubicación física de la refineria es necesaria"],
+      required: [true, "Ubicación física de la empresa es necesaria"],
     },
 
     nombre: {
@@ -34,10 +34,10 @@ const RefineriaSchema = Schema(
   }
 );
 
-RefineriaSchema.methods.toJSON = function () {
-  const { __v, _id, ...refineria } = this.toObject();
-  refineria.id = _id;
-  return refineria;
+EmpresaSchema.methods.toJSON = function () {
+  const { __v, _id, ...empresa } = this.toObject();
+  empresa.id = _id;
+  return empresa;
 };
 
-module.exports = model("Refineria", RefineriaSchema);
+module.exports = model("Empresa", EmpresaSchema);

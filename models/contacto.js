@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const ContactoSchema = new Schema({
-  id_refineria: {
+  id_empresa: {
     type: Schema.Types.ObjectId,
-    ref: "Refineria",
+    ref: "Empresa",
     required: false,
   },
   nombre: { type: String, required: false },

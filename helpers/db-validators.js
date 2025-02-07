@@ -3,7 +3,7 @@ const {
   Usuario,
   Categoria,
   Producto,
-  Refineria,
+  Empresa,
   Linea_carga,
   Tanque,
   Bomba,
@@ -29,7 +29,7 @@ const emailExiste = async (correo = "") => {
 };
 const nitExiste = async (nit = "") => {
   // Verificar si el nit existe
-  const nitExiste = await Refineria.findOne({ nit });
+  const nitExiste = await Empresa.findOne({ nit });
   if (nitExiste) {
     throw new Error(`El nit: ${nit}, ya está registrado`);
   }
@@ -43,10 +43,10 @@ const existeUsuarioPorId = async (id) => {
   }
 };
 
-const existeRefineriaPorId = async (id) => {
-  // Verificar si la refineria existe
-  const existeRefineria = await Refineria.findById(id);
-  if (!existeRefineria) {
+const existeEmpresaPorId = async (id) => {
+  // Verificar si la empresa existe
+  const existeEmpresa = await Empresa.findById(id);
+  if (!existeEmpresa) {
     throw new Error(`El id no existe ${id}`);
   }
 };
@@ -147,7 +147,7 @@ module.exports = {
   existeProductoPorId,
   coleccionesPermitidas,
   nitExiste,
-  existeRefineriaPorId,
+  existeEmpresaPorId,
   existeLineaPorId,
   existeBombaPorId,
   existeTanquePorId,

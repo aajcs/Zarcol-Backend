@@ -39,9 +39,9 @@ const TorreSchema = Schema(
       default: false,
     },
 
-    id_refineria: {
+    id_empresa: {
       type: Schema.Types.ObjectId,
-      ref: "Refineria",
+      ref: "Empresa",
       required: false,
     },
   },

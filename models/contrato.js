@@ -7,9 +7,9 @@ const ContratoSchema = Schema(
       required: [false, "El número de contrato es obligatorio"],
       unique: false,
     },
-    id_refineria: {
+    id_empresa: {
       type: Schema.Types.ObjectId,
-      ref: "Refineria",
+      ref: "Empresa",
       required: false,
     },
     id_contacto: {

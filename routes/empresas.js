@@ -13,21 +13,21 @@ const {
   emailExiste,
   existeUsuarioPorId,
   nitExiste,
-  existeRefineriaPorId,
+  existeEmpresaPorId,
 } = require("../helpers/db-validators");
 
 const {
-  refineriasGet,
-  refineriasPut,
-  refineriasPost,
-  refineriasDelete,
-  refineriasPatch,
-  refineriasGets,
-} = require("../controllers/refinerias");
+  empresasGet,
+  empresasPut,
+  empresasPost,
+  empresasDelete,
+  empresasPatch,
+  empresasGets,
+} = require("../controllers/empresas");
 
 const router = Router();
 
-router.get("/", refineriasGets);
+router.get("/", empresasGets);
 router.get(
   "/:id",
   [
@@ -35,17 +35,17 @@ router.get(
     // check('id').custom( existeProductoPorId ),
     validarCampos,
   ],
-  refineriasGet
+  empresasGet
 );
 router.put(
   "/:id",
   [
     check("id", "No es un ID válido").isMongoId(),
-    check("id").custom(existeRefineriaPorId),
+    check("id").custom(existeEmpresaPorId),
     //check("rol").custom(esRoleValido), subiendo cambioos
     validarCampos,
   ],
-  refineriasPut
+  empresasPut
 );
 
 router.post(
@@ -54,10 +54,10 @@ router.post(
     check("ubicacion", "La ubicación es obligatorio").not().isEmpty(),
     check("nombre", "El nombre del tanque es obligatorio").not().isEmpty(),
     check("nit", "El NIT es obligatorio").not().isEmpty(),
-    check("img", "El logotipo de la refineria es obligatorio").not().isEmpty(),
+    check("img", "El logotipo de la empresa es obligatorio").not().isEmpty(),
     validarCampos,
   ],
-  refineriasPost
+  empresasPost
 );
 
 router.delete(
@@ -67,12 +67,12 @@ router.delete(
     // esAdminRole,
     tieneRole("superAdmin", "admin"),
     check("id", "No es un ID válido").isMongoId(),
-    check("id").custom(existeRefineriaPorId),
+    check("id").custom(existeEmpresaPorId),
     validarCampos,
   ],
-  refineriasDelete
+  empresasDelete
 );
 
-router.patch("/", refineriasPatch);
+router.patch("/", empresasPatch);
 
 module.exports = router;

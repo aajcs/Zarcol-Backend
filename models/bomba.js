@@ -2,9 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const BombaSchema = Schema(
   {
-    id_refineria: {
+    id_empresa: {
       type: Schema.Types.ObjectId,
-      ref: "Refineria",
+      ref: "Empresa",
       required: true,
     },
 
